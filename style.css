@@ -310,7 +310,7 @@ body {
         transform:translateY(0);
         color: white;
     } to {
-        transform: translateY(-200px);
+        transform: translateY(-134px);
         color: black
     }
   }
@@ -321,6 +321,7 @@ body {
     background: url('assets/images/sandboarding-bckg.webp');
     background-repeat: no-repeat;
     background-size: cover;
+    background-attachment: fixed;
     padding: 20vh 0;
     animation: zoomBackground 2s ease-in-out forwards;
   }
@@ -335,13 +336,13 @@ body {
     grid-gap: 20px; /* Adjust the gap between grid items as needed */
     justify-content: center; /* Center the grid items horizontally */
     align-items: center; /* Center the grid items vertically */
-    margin-top: 20px;
     padding: 20px;
   }
   
   .video-item {
     width: 100%;
     height: auto; /* Adjust the height of each video item as needed */
+
   }
   
   .video-item video {
@@ -351,6 +352,11 @@ body {
     max-width: 100%;
     object-fit: contain;
     border-radius: 10px;
+    transition: transform 0.56s ease;
+  }
+  .video-item video:hover {
+    transform: scale(1.07);
+    filter: brightness(80%);
   }
   .animate {
     opacity: 0;
@@ -378,4 +384,42 @@ body {
 }
 .hidden {
     display: none;
+}
+#countdown {
+  margin-top: 20px;
+  opacity: 0;
+  animation: fade-in 1s ease-in-out forwards;
+}
+.countdown-item:nth-child(1) {
+  color: red;
+}
+.countdown-item:nth-child(2) {
+  color: rgb(255, 45, 45);
+}
+.countdown-item:nth-child(3) {
+  color: rgb(255, 89, 89);
+}
+.countdown-item:nth-child(4) {
+  color: rgb(175, 56, 56);
+}
+.countdown-item {
+  font-size: 48px;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 10px;
+  opacity: 0;
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+footer {
+  padding: 20px;
 }

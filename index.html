@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sandboarding Sport Website</title>
+    <title>Moroccan Snowboarding Assocation | Home</title>
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <script src="https://unpkg.com/linguist-translator@1.0.6"></script>
     <link rel="stylesheet" href="style.css">
@@ -133,24 +133,25 @@
       </header>
 
       <div class="header">
-        <h1 id="welcome-header">Introducing Moroccan Sandboarding Sports</h1>
+        <h1 id="welcome-header">Introducing Moroccan Sandboarding</h1>
         <div class="catalog-container">
         <center><div class="video-grid hidden">
           <div class="video-item">
-            <video src="assets/videos/sandboard-1.mp4" autoplay muted ></video>
+            <video src="assets/videos/sandboard-1.mp4" autoplay muted loop></video>
           </div>
           <div class="video-item">
-            <video src="assets/videos/sandboard-2.mp4" autoplay muted ></video>
+            <video src="assets/videos/sandboard-2.mp4" autoplay muted loop></video>
           </div>
           <div class="video-item">
-            <video src="assets/videos/sandboard-3.mp4" autoplay muted ></video>
+            <video src="assets/videos/sandboard-3.mp4" autoplay muted loop></video>
           </div>
           <div class="video-item">
-            <video src="assets/videos/sandboard-4.mp4" autoplay muted ></video>
+            <video src="assets/videos/sandboard-4.mp4" autoplay muted loop></video>
           </div>
         </div></center>
     </div>
       </div>
+   
       <script>
         const videoGrid = document.querySelector('.video-grid');
         const videoItems = document.querySelectorAll('.video-item');
@@ -167,18 +168,35 @@
             item.classList.add('animate');
           });
         }
+        var audio = new Audio("assets/audio/ad.mp3");
+        function hoverItem() {
+          
+          audio.play();
+          console.log("true");
+        }
+        function mouseOut() {
+          audio.pause();
+          audio.currentTime = 0;
+        }
+        setTimeout(()=> {
+          videoItems.forEach(item => {
+  item.addEventListener('mouseover', hoverItem);
+  item.addEventListener('mouseout',mouseOut);
+});
+
+        },3000)
+        
       </script>
       
 
     <div class="content">
-        <h2 id="about-header">About Sandboarding</h2>
-        <p id="about-content">Sandboarding is an exhilarating sport...[insert more content here]</p>
-
-        <h2 id="fun-header">Why It's Fun</h2>
-        <p id="fun-content">Sandboarding is a sport that combines adventure, thrill, and connection with nature...[insert more content here]</p>
-
-        <h2 id="start-header">Getting Started</h2>
-        <p id="start-content">If you're interested in sandboarding, here's how to get started...[insert more content here]</p>
+       <h1>Coming Soon...</h1>
+       <div id="countdown">
+        <div class="countdown-item" id="days"></div>
+        <div class="countdown-item" id="hours"></div>
+        <div class="countdown-item" id="minutes"></div>
+        <div class="countdown-item" id="seconds"></div>
+    </div>
     </div>
     <script>
         const translator = new Linguist.Translator({
@@ -196,7 +214,57 @@
                 }
             }
         });
+        
     </script>
+    <script>
+        const targetDate = new Date("2023-06-30T00:00:00Z");
+
+function updateCountdown() {
+  const currentDate = new Date();
+  const timeDifference = targetDate - currentDate;
+
+  // Calculate days, hours, minutes, and seconds
+  const days = Math.floor(timeDifference / (1000 * 60 * 60 * 24));
+  const hours = Math.floor((timeDifference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+  const minutes = Math.floor((timeDifference % (1000 * 60 * 60)) / (1000 * 60));
+  const seconds = Math.floor((timeDifference % (1000 * 60)) / 1000);
+
+  // Display the countdown elements
+  const daysElement = document.getElementById("days");
+  const hoursElement = document.getElementById("hours");
+  const minutesElement = document.getElementById("minutes");
+  const secondsElement = document.getElementById("seconds");
+
+  // Apply fade-in animation to each element in sequence
+  const countdownItems = document.querySelectorAll(".countdown-item");
+  countdownItems.forEach((item, index) => {
+    setTimeout(() => {
+      item.style.animation = "fade-in 1s ease-in-out";
+      item.style.opacity = 1;
+    }, index * 1000); // Apply delay of 1 second (1000 milliseconds) per item
+  });
+
+  // Update the countdown values
+  daysElement.innerHTML = days + " days";
+  hoursElement.innerHTML = hours + " hours";
+  minutesElement.innerHTML = minutes + " minutes";
+  secondsElement.innerHTML = seconds + " seconds";
+
+  // Update the countdown every second
+  if (timeDifference > 0) {
+    setTimeout(updateCountdown, 1000);
+  }
+}
+
+// Start the countdown
+updateCountdown();
+    </script>
+       <footer>
+        <center>
+          <p>&copy Monman11&trade; & Sandboardingma.com all rights reserved</p>
+        </center>
+      </footer>
     <script src="navbar.js"></script>
+    
 </body>
 </html>
